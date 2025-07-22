@@ -7,16 +7,28 @@ pipeline {
                 bat 'mvn clean'
             }
         }
+          stage('test') {
+            steps {
+                echo 'testing...'
+                bat 'mvn test'
+            }
+        }
         stage('Package') {
             steps {
                 echo 'Packaging...'
                 bat 'mvn package'
             }
         }
-        stage('Build') {
+        stage('install') {
             steps {
-                echo 'Building...'
+                echo 'installing...'
                 bat 'mvn install'
+            }
+        }
+          stage('deploy') {
+            steps {
+                echo 'deploying...'
+                bat 'mvn deploy'
             }
         }
      }
